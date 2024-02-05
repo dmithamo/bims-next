@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`h-full ${overpass.className}`}>{children}</body>
+      <body className={`${overpass.className}`}>{children}</body>
     </html>
   );
 }
