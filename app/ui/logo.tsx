@@ -6,7 +6,7 @@ export const AppLogo: React.FC = () => (
   <Link href={Routes.home}>
     <Image
       src="/bims-logo.svg"
-      alt="Vercel Logo"
+      alt="Bims Logo"
       className="dark:invert -translate-y-2"
       width={100}
       height={24}
