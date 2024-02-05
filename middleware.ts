@@ -1,8 +1,9 @@
+import { isAuthenticated } from "@/lib/auth.utils";
 import { Routes } from "@/lib/routes.enum";
 import { NextResponse, type NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  return NextResponse.redirect(new URL(Routes.login, request.url))
+  return !isAuthenticated() ? NextResponse.redirect(new URL(Routes.login, request.url)) : NextResponse.next()
 }
 
 
