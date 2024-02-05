@@ -1,12 +1,19 @@
-import { AppLogo } from "@/ui/logo";
+import { AppLogo } from '@/ui/logo';
+import { AppFooter } from './ui/footer';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col justify-around place-items-center p-24">
-      <div>
-        <AppLogo />
-        <small className="text-slate-500 dark:text-gray-100">This is the landing page for bims. It will likely not last very long&trade;</small>
-      </div>
-    </main>
+    <>
+      <main className="flex h-full flex-col justify-around p-2 place-items-center">
+        <div className="">
+          <AppLogo />
+          <small className="text-slate-500 dark:text-gray-100 block">
+            This is the landing page for bims. I might use it for marketting
+            verbiage&trade;
+          </small>
+        </div>
+      </main>
+      <AppFooter />
+    </>
   );
 }

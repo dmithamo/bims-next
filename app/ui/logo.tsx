@@ -1,10 +1,16 @@
+import { Routes } from '@/lib/routes.enum';
 import Image from 'next/image';
+import Link from 'next/link';
 
-export const AppLogo: React.FC = () => true ? <strong className='text-4xl select-none font-extrabold'>bims</strong> : <Image
-  src="/bims-logo.svg"
-  alt="Vercel Logo"
-  className="dark:invert"
-  width={100}
-  height={24}
-  priority
-/>
+export const AppLogo: React.FC = () => (
+  <Link href={Routes.home}>
+    <Image
+      src="/bims-logo.svg"
+      alt="Vercel Logo"
+      className="dark:invert -translate-y-2"
+      width={100}
+      height={24}
+      priority
+    />
+  </Link>
+);

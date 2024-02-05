@@ -1,5 +1,5 @@
 export enum Routes {
   home = '/',
-  login = "/auth/login",
-  resetPassword = '/rest-password'
+  login = '/auth/login',
+  resetPassword = '/rest-password',
 }

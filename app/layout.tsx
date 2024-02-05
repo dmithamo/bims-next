@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
-import { Overpass } from "next/font/google";
-import "./globals.css";
+import '@/globals.css';
+import { AppHeader } from '@/ui/header';
+import type { Metadata } from 'next';
+import { Overpass } from 'next/font/google';
 
-const overpass = Overpass({ subsets: ["latin"] });
+const overpass = Overpass({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Bims",
-    default: "Bims"
+    template: '%s | Bims',
+    default: 'Bims',
   },
-  description: "The one stop shop for all things bims",
+  description: 'The one stop shop for all things bims',
 };
 
 export default function RootLayout({
@@ -19,7 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${overpass.className}`}>{children}</body>
+      <body className={`h-screen flex flex-col ${overpass.className}`}>
+        <AppHeader />
+        <main className='flex-1'>
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
