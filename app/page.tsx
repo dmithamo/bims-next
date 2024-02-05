@@ -2,9 +2,11 @@ import { BimsLogo } from "@/ui/logo";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <BimsLogo />
-      <p>This is the landing page for bims. It will likely not last very long&trade;</p>
+    <main className="flex min-h-screen flex-col justify-around place-items-center p-24">
+      <div>
+        <BimsLogo />
+        <small className="text-slate-500 dark:text-gray-100">This is the landing page for bims. It will likely not last very long&trade;</small>
+      </div>
     </main>
   );
 }
