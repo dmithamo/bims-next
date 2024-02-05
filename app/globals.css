@@ -16,11 +16,16 @@
   }
 }
 
+html {
+  min-height: 100vh;
+  height: auto;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
-      /* transparent, */
+      transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
