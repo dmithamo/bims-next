@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`h-screen flex flex-col ${overpass.className}`}>
+      <body className={`h-screen flex flex-col text-base ${overpass.className}`}>
         <AppHeader />
         <main className='flex-1'>
           {children}

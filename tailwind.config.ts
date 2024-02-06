@@ -17,6 +17,9 @@ const config: Config = {
         fgcolor: "rgb(var(--foreground-rgb))",
         bgcolor: "rgb(var(--background-start-rgb))",
         bgcolor2: "rgb(var(--background-end-rgb))",
+      },
+      fontSize: {
+        base: ['0.90rem', { lineHeight: '1.5rem' }],
       }
     },
   },

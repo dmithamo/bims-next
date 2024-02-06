@@ -1,6 +1,6 @@
 export default function DashboardSecondaryNav({ children }: Readonly<{ children: React.ReactNode }>) {
   return <div>
-    <small>Not sure how to use this. Secondary nav perhaps</small>
+    <p>Not sure how to use this. Secondary nav perhaps</p>
     <section>{children}
     </section>
   </div>
