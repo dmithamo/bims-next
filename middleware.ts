@@ -1,10 +1,10 @@
 import { isAuthenticated } from "@/lib/auth.utils";
-import { Routes } from "@/lib/routes.enum";
+import { AppRoute } from "@/lib/routes.enum";
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname === Routes.home) return NextResponse.next()
-  return !isAuthenticated() ? NextResponse.redirect(new URL(Routes.login, request.url)) : NextResponse.next()
+  if (request.nextUrl.pathname === AppRoute.home) return NextResponse.next()
+  return !isAuthenticated() ? NextResponse.redirect(new URL(AppRoute.login, request.url)) : NextResponse.next()
 }
 
 

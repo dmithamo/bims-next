@@ -1,9 +1,9 @@
-import { Routes } from '@/lib/routes.enum';
+import { AppRoute } from '@/lib/routes.enum';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export const AppLogo: React.FC = () => (
-  <Link href={Routes.home}>
+  <Link href={AppRoute.home}>
     <Image
       src="/bims-logo.svg"
       alt="Bims Logo"

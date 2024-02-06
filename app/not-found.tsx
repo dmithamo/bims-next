@@ -1,4 +1,4 @@
-import { Routes } from '@/lib/routes.enum';
+import { AppRoute } from '@/lib/routes.enum';
 import { IconError404 } from '@tabler/icons-react';
 import Link from 'next/link';
 import { AppFooter } from './ui/footer';
@@ -15,7 +15,7 @@ export default function NotFound() {
               Click{' '}
               <Link
                 className="px-1 underline underline-offset-2"
-                href={Routes.home}
+                href={AppRoute.home}
               >
                 here
               </Link>{' '}

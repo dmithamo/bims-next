@@ -20,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`h-screen flex flex-col text-base ${ibm.className}`}>
+      <body
+        className={`gradient-bg h-screen flex flex-col text-base ${ibm.className}`}
+      >
         <AppHeader />
         <main className="flex-1">{children}</main>
       </body>
