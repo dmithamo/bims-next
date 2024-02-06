@@ -3,7 +3,7 @@ import { AppHeader } from '@/ui/header';
 import type { Metadata } from 'next';
 import { IBM_Plex_Sans } from 'next/font/google';
 
-const ibm = IBM_Plex_Sans({ subsets: ['latin'], weight: "400" });
+const ibm = IBM_Plex_Sans({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
   title: {
@@ -22,9 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`h-screen flex flex-col text-base ${ibm.className}`}>
         <AppHeader />
-        <main className='flex-1'>
-          {children}
-        </main>
+        <main className="flex-1">{children}</main>
       </body>
     </html>
   );
