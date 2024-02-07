@@ -6,6 +6,7 @@ import { AppRoute } from '@/lib/routes.enum';
 import { IconLogout2 } from '@tabler/icons-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 
 const timelinesIcon = '/bims-icons/calendar-month.svg';
@@ -88,8 +89,11 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
     [loggedInUser],
   );
 
+  const pathname = usePathname();
+  const isActive = (href: AppRoute) => pathname.includes(href);
+
   function handleLogout() {
-    onClose()
+    onClose();
   }
 
   if (loggedInUser?.permissions.length === 0) return null;
@@ -100,8 +104,7 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
         <>
           <Link
             href={href}
-            className="flex items-center gap-4"
-
+            className={`flex items-center gap-4 ${isActive(href) ? 'text-accent' : ''}`}
             onClick={onClose}
           >
             <Image
@@ -111,15 +114,15 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
               width={ICON_SIZE}
               priority
             />
-            <span className='font-bold'>{label}</span>
+            <span className="font-bold">{label}</span>
           </Link>
 
           {subroutes?.length && (
-            <div className='flex flex-col gap-6 place-items-start ml-8'>
+            <div className="flex flex-col gap-6 place-items-start ml-8 -mt-8">
               {subroutes?.map(({ href, iconUrl, label }) => (
                 <Link
                   href={href}
-                  className="flex items-center gap-4"
+                  className={`flex items-center gap-4 ${isActive(href) ? 'text-accent' : ''}`}
                   key={href}
                   onClick={onClose}
                 >
@@ -138,14 +141,10 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
         </>
       ))}
 
-      <button
-        onClick={handleLogout}
-
-        className="flex items-center gap-4"
-
-      >
-        <span><IconLogout2 height={ICON_SIZE}
-          width={ICON_SIZE} /></span>
+      <button onClick={handleLogout} className="flex items-center gap-4">
+        <span>
+          <IconLogout2 height={ICON_SIZE} width={ICON_SIZE} />
+        </span>
         <span>Logout</span>
       </button>
     </nav>
