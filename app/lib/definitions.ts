@@ -1,11 +1,11 @@
-import { type TablerIconsProps } from '@tabler/icons-react';
 import { AppRoute } from './routes.enum';
 
 export type SidebarItem = {
-  icon: (props: TablerIconsProps) => JSX.Element;
+  iconUrl: string;
   href: AppRoute;
   label: string;
   permission: string;
+  subroutes?: Omit<SidebarItem, 'subroutes'>[];
 };
 
 export type LoggedInUser = {
