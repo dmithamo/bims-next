@@ -11,3 +11,23 @@ export function useLoggedInUser(): LoggedInUser | null {
     ],
   };
 }
+
+export function hasAccess(
+  requiredPermissions: Array<string>,
+  userPermissions: Array<string> = [],
+): boolean {
+  return requiredPermissions
+    .map((rqdPerm) => hasPermission(rqdPerm, userPermissions))
+    .every(Boolean);
+}
+
+export function hasPermission(
+  requiredPermission: string,
+  userPermissions: Array<string>,
+) {
+  for (const uPerm of userPermissions) {
+    if (requiredPermission.startsWith(uPerm)) return true;
+  }
+
+  return false;
+}

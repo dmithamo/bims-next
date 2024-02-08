@@ -1,7 +1,7 @@
 'use client';
 
-import type { SidebarItem } from '@/lib/definitions';
-import { useLoggedInUser } from '@/lib/hooks/use-logged-in-user';
+import { ICON_SIZE, SIDEBAR_ITEMS, type NavItem } from '@/lib/definitions';
+import { hasAccess, useLoggedInUser } from '@/lib/hooks/use-logged-in-user';
 import { AppRoute } from '@/lib/routes.enum';
 import { IconLogout2 } from '@tabler/icons-react';
 import Image from 'next/image';
@@ -9,82 +9,16 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 
-const timelinesIcon = '/bims-icons/calendar-month.svg';
-const transactionsIcon = '/bims-icons/chart-bar.svg';
-const budgetIcon = '/bims-icons/chart-pie.svg';
-const dashboardIcon = '/bims-icons/presentation.svg';
-const investmentsIcon = '/bims-icons/shield-star.svg';
-const walletIcon = '/bims-icons/wallet.svg';
-const inventoryIcon = '/bims-icons/address-book.svg';
-const settingsIcon = '/bims-icons/settings.svg';
-
-const ICON_SIZE = 18;
-
-const SIDEBAR_ITEMS: SidebarItem[] = [
-  {
-    href: AppRoute.money,
-    iconUrl: dashboardIcon,
-    label: 'Money',
-    permission: 'app:money',
-    subroutes: [
-      {
-        href: AppRoute.transactions,
-        iconUrl: transactionsIcon,
-        label: 'Transactions',
-        permission: 'app:money:transactions',
-      },
-      {
-        href: AppRoute.wallet,
-        iconUrl: walletIcon,
-        label: 'Wallet',
-        permission: 'app:money:balances',
-      },
-      {
-        href: AppRoute.budget,
-        iconUrl: budgetIcon,
-        label: 'Budget',
-        permission: 'app:money:budget',
-      },
-      {
-        href: AppRoute.investments,
-        iconUrl: investmentsIcon,
-        label: 'Investments',
-        permission: 'app:money:investments',
-      },
-    ],
-  },
-  {
-    href: AppRoute.inventory,
-    iconUrl: inventoryIcon,
-    label: 'Inventory',
-    permission: 'app:inventory',
-  },
-  {
-    href: AppRoute.timelines,
-    iconUrl: timelinesIcon,
-    label: 'Timelines',
-    permission: 'app:timelines',
-  },
-  {
-    href: AppRoute.settings,
-    iconUrl: settingsIcon,
-    label: 'Settings',
-    permission: 'app:settings',
-  },
-];
-
 type Props = {
   onClose(): void;
 };
 
 export const Sidebar: React.FC<Props> = ({ onClose }) => {
   const loggedInUser = useLoggedInUser();
-  const allowedSidebarItems = useMemo<SidebarItem[]>(
+  const allowedSidebarItems = useMemo<NavItem[]>(
     () =>
       SIDEBAR_ITEMS.filter((item) =>
-        loggedInUser?.permissions.some((permission) =>
-          permission.startsWith(item.permission),
-        ),
+        hasAccess([item.permission], loggedInUser?.permissions),
       ),
     [loggedInUser],
   );
@@ -103,6 +37,7 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
       {allowedSidebarItems.map(({ href, iconUrl, label, subroutes }) => (
         <>
           <Link
+            key={href}
             href={href}
             className={`flex items-center gap-4 ${isActive(href) ? 'text-accent' : ''}`}
             onClick={onClose}
