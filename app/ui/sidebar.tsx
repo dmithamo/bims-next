@@ -3,8 +3,8 @@
 import { ICON_SIZE, SIDEBAR_ITEMS, type NavItem } from '@/lib/definitions';
 import { hasAccess, useLoggedInUser } from '@/lib/hooks/use-logged-in-user';
 import { AppRoute } from '@/lib/routes.enum';
+import { ImageIcon } from '@/ui/image-icon';
 import { IconLogout2 } from '@tabler/icons-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
@@ -24,7 +24,7 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
   );
 
   const pathname = usePathname();
-  const isActive = (href: AppRoute) => pathname.includes(href);
+  const isActive = (href: AppRoute, isParent: boolean) => isParent ? pathname.includes(href) : pathname === href;
 
   function handleLogout() {
     onClose();
@@ -39,16 +39,10 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
           <Link
             key={href}
             href={href}
-            className={`flex items-center gap-4 ${isActive(href) ? 'text-accent' : ''}`}
+            className={`flex items-center gap-4 ${isActive(href, true) ? 'text-fgcolor2' : ''}`}
             onClick={onClose}
           >
-            <Image
-              src={iconUrl}
-              alt={href}
-              height={ICON_SIZE}
-              width={ICON_SIZE}
-              priority
-            />
+            <ImageIcon iconUrl={iconUrl} alt={href} isActive={isActive(href, true)} />
             <span className="font-bold">{label}</span>
           </Link>
 
@@ -57,17 +51,11 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
               {subroutes?.map(({ href, iconUrl, label }) => (
                 <Link
                   href={href}
-                  className={`flex items-center gap-4 ${isActive(href) ? 'text-accent' : ''}`}
+                  className={`flex items-center gap-4 ${isActive(href, false) ? 'text-fgcolor2' : ''}`}
                   key={href}
                   onClick={onClose}
                 >
-                  <Image
-                    src={iconUrl}
-                    alt={href}
-                    height={ICON_SIZE}
-                    width={ICON_SIZE}
-                    priority
-                  />
+                  <ImageIcon iconUrl={iconUrl} alt={href} isActive={isActive(href, false)} />
                   <span>{label}</span>
                 </Link>
               ))}

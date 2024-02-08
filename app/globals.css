@@ -4,6 +4,7 @@
 
 :root {
   --foreground-rgb: 59, 68, 75;
+  --foreground-clear-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 250, 250, 250;
   --accent-rgb: 0, 87, 138;
@@ -11,7 +12,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 250, 250, 250;
+    --foreground-rgb: 220, 220, 220;
+    --foreground-clear-rgb: 250, 250, 250;
     --background-start-rgb: 59, 68, 75;
     --background-end-rgb: 59, 68, 75;
     --accent-rgb: 0, 87, 138;

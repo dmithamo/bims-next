@@ -1,8 +1,8 @@
 'use client';
 
-import { ICON_SIZE, ICON_SIZE_BIGGER, NavItem } from '@/lib/definitions';
+import { NavItem } from '@/lib/definitions';
 import { AppRoute } from '@/lib/routes.enum';
-import Image from 'next/image';
+import { ImageIcon } from '@/ui/image-icon';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -20,15 +20,9 @@ export const AppBottomNav: React.FC<Props> = ({ navItems }) => {
         <Link
           href={href}
           key={href}
-          className={`flex items-center gap-4 ${isActive(href) ? 'text-accent' : ''}`}
+          className={`flex items-center gap-4 ${isActive(href) ? 'text-fgcolor2' : ''}`}
         >
-          <Image
-            src={iconUrl}
-            alt={href}
-            height={isActive(href) ? ICON_SIZE_BIGGER : ICON_SIZE}
-            width={isActive(href) ? ICON_SIZE_BIGGER : ICON_SIZE}
-            priority
-          />
+          <ImageIcon iconUrl={iconUrl} alt={href} isActive={isActive(href)} />
           {isActive(href) && <span className="">{label}</span>}
         </Link>
       ))}

@@ -17,7 +17,7 @@ export type LoggedInUser = {
 };
 
 export const ICON_SIZE = 18;
-export const ICON_SIZE_BIGGER = 24;
+export const ICON_SIZE_BIGGER = 20;
 
 const timelinesIcon = '/bims-icons/calendar-month.svg';
 const transactionsIcon = '/bims-icons/chart-bar.svg';

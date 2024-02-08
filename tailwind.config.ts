@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         fgcolor: "rgb(var(--foreground-rgb))",
+        fgcolor2: "rgb(var(--foreground-clear-rgb))",
         bgcolor: "rgb(var(--background-start-rgb))",
         bgcolor2: "rgb(var(--background-end-rgb))",
         accent: "rgb(var(--accent-rgb))"
