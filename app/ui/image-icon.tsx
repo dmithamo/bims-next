@@ -1,4 +1,4 @@
-import { ICON_SIZE, ICON_SIZE_BIGGER } from "@/lib/definitions";
+import { ICON_SIZE } from "@/lib/definitions";
 import Image from "next/image";
 
 type Props = {
@@ -12,8 +12,8 @@ export const ImageIcon: React.FC<Props> = ({ iconUrl, alt = "Some icon", iconHei
   <Image
     src={iconUrl}
     alt={alt}
-    height={isActive ? ICON_SIZE_BIGGER : iconHeight}
-    width={isActive ? ICON_SIZE_BIGGER : iconWidth}
+    height={iconHeight}
+    width={iconWidth}
     priority
     className={isActive ? "opacity-100" : "opacity-60"}
   />

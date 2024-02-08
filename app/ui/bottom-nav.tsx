@@ -13,11 +13,12 @@ export const AppBottomNav: React.FC<Props> = ({ navItems }) => {
   const pathname = usePathname();
   const isActive = (href: AppRoute) => pathname === href;
 
-  if (navItems.length === 0) return null;
+  if (navItems.length < 2) return null;
   return (
     <footer className="p-4 h-16 w-full bg-bgcolor2 shadow fixed bottom-0 left-0 flex justify-between items-center">
       {navItems.map(({ href, iconUrl, label }) => (
         <Link
+          prefetch
           href={href}
           key={href}
           className={`flex items-center gap-4 ${isActive(href) ? 'text-fgcolor2' : ''}`}

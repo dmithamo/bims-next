@@ -26,6 +26,7 @@ export default function DashboardLayout({
       }, []),
     [pathname, loggedInUser],
   );
+
   return (
     <div className="flex h-full">
       <AppBottomNav navItems={allowedBottomNavItems} />
