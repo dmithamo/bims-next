@@ -64,12 +64,14 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
         </>
       ))}
 
-      <button onClick={handleLogout} className="flex items-center gap-4">
+      <Link href={AppRoute.login} onClick={handleLogout}
+        className={`flex items-center gap-4`}
+      >
         <span>
           <IconLogout2 height={ICON_SIZE} width={ICON_SIZE} />
         </span>
         <span>Logout</span>
-      </button>
+      </Link>
     </nav>
   );
 };
