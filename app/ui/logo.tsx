@@ -8,8 +8,8 @@ export const AppLogo: React.FC = () => (
       src="/bims-logo.svg"
       alt="Bims Logo"
       className="dark:invert -translate-y-2"
-      width={100}
-      height={24}
+      width={75}
+      height={16}
       priority
     />
   </Link>

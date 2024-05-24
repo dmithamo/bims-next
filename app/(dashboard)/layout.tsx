@@ -1,10 +1,10 @@
 'use client';
 
-import { BottomNavItem, SIDEBAR_ITEMS } from "@/lib/definitions";
-import { hasAccess, useLoggedInUser } from "@/lib/hooks/use-logged-in-user";
-import { AppBottomNav } from "@/ui/bottom-nav";
-import { usePathname } from "next/navigation";
-import { useMemo } from "react";
+import { BottomNavItem, SIDEBAR_ITEMS } from '@/lib/definitions';
+import { hasAccess, useLoggedInUser } from '@/lib/hooks/use-logged-in-user';
+import { AppBottomNav } from '@/ui/bottom-nav';
+import { usePathname } from 'next/navigation';
+import { useMemo } from 'react';
 
 export default function DashboardLayout({
   children,
@@ -29,8 +29,8 @@ export default function DashboardLayout({
 
   return (
     <div className="flex h-full">
+      <main className="flex-1 p-4 pr-12">{children}</main>
       <AppBottomNav navItems={allowedBottomNavItems} />
-      <main className="p-4 flex-1">{children}</main>
     </div>
   );
 }

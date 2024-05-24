@@ -15,13 +15,13 @@ export const AppBottomNav: React.FC<Props> = ({ navItems }) => {
 
   if (navItems.length < 2) return null;
   return (
-    <footer className="p-4 h-16 w-full bg-bgcolor2 shadow fixed bottom-0 left-0 flex justify-between items-center">
+    <footer className="p-6 h-12 w-full bg-bgcolor shadow fixed bottom-0 left-0 flex justify-between items-center">
       {navItems.map(({ href, iconUrl, label }) => (
         <Link
           prefetch
           href={href}
           key={href}
-          className={`flex items-center gap-4 ${isActive(href) ? 'text-fgcolor2' : ''}`}
+          className={`flex items-center gap-4 ${isActive(href) ? 'text-accent' : ''}`}
         >
           <ImageIcon iconUrl={iconUrl} alt={href} isActive={isActive(href)} />
           {isActive(href) && <span className="">{label}</span>}

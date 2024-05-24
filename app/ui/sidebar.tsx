@@ -24,7 +24,8 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
   );
 
   const pathname = usePathname();
-  const isActive = (href: AppRoute, isParent: boolean) => isParent ? pathname.includes(href) : pathname === href;
+  const isActive = (href: AppRoute, isParent: boolean) =>
+    isParent ? pathname.includes(href) : pathname === href;
 
   function handleLogout() {
     onClose();
@@ -33,7 +34,7 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
   if (loggedInUser?.permissions.length === 0) return null;
 
   return (
-    <nav className="bg-bgcolor2 p-6 h-screen w-full sm:w-1/3 sm:shadow-lg flex flex-col gap-12 place-items-start fixed right-0 top-24 z-10">
+    <nav className="bg-bgcolor2 p-6 h-screen w-full sm:w-1/3 sm:shadow-lg flex flex-col gap-12 place-items-start fixed right-0 top-0 z-10">
       {allowedSidebarItems.map(({ href, iconUrl, label, subroutes }) => (
         <>
           <Link
@@ -42,7 +43,11 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
             className={`flex items-center gap-4 ${isActive(href, true) ? 'text-fgcolor2' : ''}`}
             onClick={onClose}
           >
-            <ImageIcon iconUrl={iconUrl} alt={href} isActive={isActive(href, true)} />
+            <ImageIcon
+              iconUrl={iconUrl}
+              alt={href}
+              isActive={isActive(href, true)}
+            />
             <span className="font-bold">{label}</span>
           </Link>
 
@@ -55,7 +60,11 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
                   key={href}
                   onClick={onClose}
                 >
-                  <ImageIcon iconUrl={iconUrl} alt={href} isActive={isActive(href, false)} />
+                  <ImageIcon
+                    iconUrl={iconUrl}
+                    alt={href}
+                    isActive={isActive(href, false)}
+                  />
                   <span>{label}</span>
                 </Link>
               ))}
@@ -64,7 +73,9 @@ export const Sidebar: React.FC<Props> = ({ onClose }) => {
         </>
       ))}
 
-      <Link href={AppRoute.login} onClick={handleLogout}
+      <Link
+        href={AppRoute.login}
+        onClick={handleLogout}
         className={`flex items-center gap-4`}
       >
         <span>
