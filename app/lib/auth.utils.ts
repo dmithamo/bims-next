@@ -1,3 +1,4 @@
 export function isAuthenticated() {
-  return Math.round(Math.random() * 5) > 3;
+  // return Math.round(Math.random() * 5) > 3;
+  return true;
 }

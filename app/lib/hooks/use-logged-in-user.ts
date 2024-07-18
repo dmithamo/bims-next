@@ -1,7 +1,7 @@
 import { LoggedInUser } from '../definitions';
 
 export function useLoggedInUser(): LoggedInUser | null {
-  return true
+  return false
     ? null
     : {
         username: 'dmithamo',

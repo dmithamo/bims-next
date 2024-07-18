@@ -1,9 +1,9 @@
 import '@/globals.css';
 import { AppHeader } from '@/ui/header';
 import type { Metadata } from 'next';
-import { Space_Grotesk } from 'next/font/google';
+import { Overpass } from 'next/font/google';
 
-const ibm = Space_Grotesk({ subsets: ['latin'], weight: ['400'] });
+const overpass = Overpass({ subsets: ['latin'], weight: ['400'] });
 
 export const metadata: Metadata = {
   title: {
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`bg-bgcolor2 h-screen flex flex-col text-base ${ibm.className} font-normal`}
+        className={`bg-bgcolor2 h-screen flex flex-col text-base ${overpass.className} font-normal`}
       >
         <AppHeader />
         <main className="flex-1">{children}</main>

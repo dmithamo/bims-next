@@ -8,7 +8,7 @@ export default function Home() {
         <div className="">
           <AppLogo />
           <p className="text-slate-500 dark:text-gray-100 block">
-            This is the landing page for bims. I might use it for marketting
+            This is the landing page for bims. I might use it for marketing
             verbiage&trade;
           </p>
         </div>
